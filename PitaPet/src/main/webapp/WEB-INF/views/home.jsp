@@ -9,6 +9,7 @@
 </head>
 <body>
 <div id="home">
+	<p>추가해서 확인해보자</p>
 	<header-component :cpath="cpath" :id="id"></header-component>
 	<slider-component :cpath="cpath"></slider-component>
 	<intro-component></intro-component>
