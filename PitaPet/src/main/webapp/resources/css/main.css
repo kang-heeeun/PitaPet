@@ -794,11 +794,14 @@
     overflow:hidden;
 }
 #AdoptReview .gallery_wrap .gallery-thumnail img{
-	width:100%;
-	display:block;
-	border:0;
-	z-index:1;
-	position:relative;
+    height: 100%;
+    display: inline-block;
+    border: 0;
+    z-index: 1;
+    position: relative;
+    max-width: auto;
+    width: 100%;
+    object-fit: cover;
 }
 #AdoptReview .gallery_wrap .gallery_list::before{
     content: "";
@@ -922,8 +925,11 @@
 	position:relative;
 	z-index:1;
 	object-fit:cover;
-	 transform: scale(1);
-	 transition:1s;
+	transform: scale(1);
+	transition:1s;
+	max-width:auto;
+	width:100%;
+	
 }
 
 #AdoptFamily .grid-left .gallery-thumb{

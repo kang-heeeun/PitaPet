@@ -6,234 +6,129 @@
 <head>
 <meta charset="UTF-8">
 <title>핏어펫(Pit a Pet) - 사지않고 유기동물을 입양하는 문화를 만듭니다</title>
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <jsp:include page="/resources/resource.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user.css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-<style>
-button {
-	margin-top:50px;
-	 margin: 0;
-  	padding: 0;
-}
-button.btn.btn-primary{
-	margin:30px;
-}
-div.tab.btn.btn-primary {
-	height: 40px;
-}
-.items {
-  display: none;
-  position: relative;
-}
-.items.active {
-  display: inline-block;
-}
-
-#signup_form{
-  background-image: linear-gradient(90deg, rgb(106, 33, 223), rgb(209, 51, 230));
-}
-.container {
-  vertical-align: middle;
-  text-align: center;
-}
-.form-title {
-  margin-bottom:15px;
-  text-align: center;
-  font-weight: bold;
-}
-.content {
-  display: inline-block;
-  text-align: left;
-  background-color: whitesmoke;
-  border-radius: .7em;
-  padding: 3rem 3rem 3rem;
-}
-.tabs{
-	padding-top:20px;
-}
-.btn {
-  border: none;
-  font-weight: bold;
-  width: 22.5rem;
-  background-image: linear-gradient(90deg, rgb(209, 51, 230), rgb(106, 33, 223), rgb(9, 204, 204));
-  border-radius: 2rem;
-  height: 2.5rem;
-  color: whitesmoke;
-}
-.tab{
-	border-radius: 0.2rem;
-	display:inline-block;
-	width: 16rem;
-	height: 2.5rem;
-	border:1px solid #fff;
-}
-.tab p {
-	margin-top:8px;
-	color:#fff;
-}
-.addr-btn{
-	margin:30px;
-}
-.tab:hover{ 
-	cursor:pointer;
-	
- }
-</style>
 </head>
 <body>
 <div id="signup_form">
-	<jsp:include page="/resources/header.jsp"></jsp:include>
-	<slider-component :cpath="cpath"></slider-component>
-	<intro-component></intro-component>
-	<review-component></review-component>
-	<family-component></family-component>
-	<footer-component></footer-component>
-	<div class="container">
-	     <div class="tabs">
-	     	<div class="tab" data-tab-target="#tab1">
-	         	<p>일반회원</p>
-	       	</div>
-		     <div class="tab" data-tab-target="#tab2">
-		        <p>보호소</p>
-		     </div>
-		  </div>
-	     <br />
-	      <div id="tab1" data-tab-content class="items active">
-	        	<form class="content" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm">
-	        		<h1 class="form-title">일반회원 회원가입 폼</h1>
-					<div>
-						<label class="control-label" for="id">아이디</label>
-						<input class="form-control id" type="text" name="id" id="users_id"/>
-						<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요.</small>
-						<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
-					</div>
-					<div>
-						<label class="control-label" for="pwd">비밀번호</label>
-						<input class="form-control" type="password" name="pwd" id="users_pwd"/>
-						<small class="form-text text-muted">5글자~10글자 이내로 입력하세요.</small>
-						<div class="invalid-feedback">비밀번호를 확인 하세요.</div>
-					</div>
-					<div>
-						<label class="control-label" for="pwd">비밀번호 확인</label>
-						<input class="form-control" type="password" name="pwd2" id="users_pwd2"/>
-					</div>
-					<br />
-					<div>
-						<label for="name">이름</label>
-						<input class="form-control" type="text" name="name" id="users_name" />
-					</div>
-					<br />
-					<div>
-						<label class="control-label" for="phoneNumber">연락처</label>		
-						<input class="form-control" type="tel" name="phoneNumber" id="users_phoneNumber"/>
-					</div>
-					<br />
-					<div>
-						<label for="birth">생년월일</label>
-						<input class="form-control" type="date" name="birth" value="1998-08-20" />
-					</div>
-					<br />
-					<div>
-						<label class="control-label" for="email">이메일</label>
-						<input class="form-control email" type="text" name="email" id="users_email"/>
-						<div class="invalid-feedback">이메일 형식을 확인 하세요.</div>
-					</div>
-					<br />
-					<div>
-						<label class="control-label" for="address">주소</label>
-						<input class="form-control" type="text" name="address" id="users_address" />
-						<a class="addr-btn btn btn-primary btn-sm" href="javascript:openAddrPop('${pageContext.request.contextPath}/users/addr.do', 'popup');">주소 검색</a>
-					</div>
-		
-					<div>
-						<label class="control-label" for="household">가구원</label>
-						<select class="form-select" name="household" id="household">
-							<option value="one">1명</option>
-							<option value="two">2명</option>
-							<option value="three">3명이상</option>
-						</select>
-					</div>
-					<input type="hidden" name="groupNum" value="0" />
-					 <button class="btn btn-primary" type="submit">가입</button>
-				</form>
-	      </div>
-
-	      <div id="tab2" data-tab-content class="items">
-			<form class="content" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm2">
-			<h1 class="form-title">보호소회원 회원가입 폼</h1>
-				<div>
-					<label class="control-label" for="id">아이디</label>
-					<input class="form-control id" type="text" name="id" id="shelter_id"/>
-					<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요.</small>
-					<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
-				</div>
-				<div>
-					<label class="control-label" for="pwd">비밀번호</label>
-					<input class="form-control" type="password" name="pwd" id="shelter_pwd"/>
-					<small class="form-text text-muted">5글자~10글자 이내로 입력하세요.</small>
-					<div class="invalid-feedback">비밀번호를 확인 하세요.</div>
-				</div>
-				<div>
-					<label class="control-label" for="pwd">비밀번호 확인</label>
-					<input class="form-control" type="password" name="pwd2" id="shelter_pwd2"/>
-				</div>
-				<br />
-				<div>
-					<label class="control-label" for="name">보호소 이름</label>
-					<input class="form-control" type="text" name="name" id="shelter_name"/>
-				</div>
-				<br />
-				<div>
-					<label class="control-label" for="serialNum">고유번호</label>
-					<input class="form-control" type="text" name="serialNum" id="serialNum"/>
-					<small class="form-text text-muted">000-00-00000 형식으로 입력하세요</small>
-					<div class="invalid-feedback">고유번호를 확인하세요.</div>
-				</div>
-				<br />
-				<div>
-					<label class="control-label" for="address">보호소 위치</label>
-					<input class="form-control" type="text" name="address" id="shelter_address" />
-					<a class="addr-btn btn btn-primary btn-sm" href="javascript:openAddrPop('${pageContext.request.contextPath}/users/addr.do', 'popup');">주소 검색</a>
-					<input type="hidden" name="longitude" id="longitude"/> <!-- 위도 / 경도 -->
-					<input type="hidden" name="latitude" id="latitude"/> 
-				</div>
-	
-				<div>
-					<label class="control-label" for="phoneNumber">연락처</label>
-					<input class="form-control" type="tel" name="phoneNumber" id="shelter_phoneNumber"/>
-				</div>
-				<br />
-				<div>
-					<label class="control-label" for="email">이메일</label>
-					<input class="form-control email" type="text" name="email" id="shelter_email"/>
-					<div class="invalid-feedback">이메일 형식을 확인 하세요.</div>
-				</div>
-				<input type="hidden" name="groupNum" value="1" />
-				<button class="btn btn-primary" type="submit">가입</button>
-			</form>
-      </div>
-
-      
+	<header-component :cpath="cpath" :id="id"></header-component>
+	<div class="user-wrap">
+		<div class="user-form">
+			<div class="tab-btn">
+		     	<button v-for="(tab, index) in tabs" 
+                  :key="index"
+                  :class="{active: currentTab == index}"
+                  @click="currentTab = index">{{tab}}</button>
+			  </div>
+		      <div class="tab-content">
+		        	<form v-show="currentTab == 0" class="content" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm">
+						<div>
+							<label class="control-label" for="id">아이디</label>
+							<input class="form-control id" type="text" name="id" id="users_id"/>
+							<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요.</small>
+							<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
+						</div>
+						<div>
+							<label class="control-label" for="pwd">비밀번호</label>
+							<input class="form-control" type="password" name="pwd" id="users_pwd"/>
+							<small class="form-text text-muted">5글자~10글자 이내로 입력하세요.</small>
+							<div class="invalid-feedback">비밀번호를 확인 하세요.</div>
+						</div>
+						<div>
+							<label class="control-label" for="pwd">비밀번호 확인</label>
+							<input class="form-control" type="password" name="pwd2" id="users_pwd2"/>
+						</div>
+						<div>
+							<label for="name">이름</label>
+							<input class="form-control" type="text" name="name" id="users_name" />
+						</div>
+						<div>
+							<label class="control-label" for="phoneNumber">연락처</label>		
+							<input class="form-control" type="tel" name="phoneNumber" id="users_phoneNumber"/>
+						</div>
+						<div>
+							<label for="birth">생년월일</label>
+							<input class="form-control" type="date" name="birth" value="1998-08-20" />
+						</div>
+						<div>
+							<label class="control-label" for="email">이메일</label>
+							<input class="form-control email" type="text" name="email" id="users_email"/>
+							<div class="invalid-feedback">이메일 형식을 확인 하세요.</div>
+						</div>
+						<div>
+							<label class="control-label" for="address">주소</label>
+							<input class="form-control" type="text" name="address" id="users_address" />
+							<a class="addr-btn btn btn-m btn-black" href="javascript:openAddrPop('${pageContext.request.contextPath}/users/addr.do', 'popup');">주소 검색</a>
+						</div>
+						<div>
+							<label class="control-label" for="household">가구원</label>
+							<select class="form-select" name="household" id="household">
+								<option value="one">1명</option>
+								<option value="two">2명</option>
+								<option value="three">3명이상</option>
+							</select>
+						</div>
+						<input type="hidden" name="groupNum" value="0" />
+						 <button class="btn btn-m btn-black" type="submit">가입</button>
+					</form>
+					<form v-show="currentTab == 1" class="content" action="${pageContext.request.contextPath}/users/signup.do" method="post" id="myForm2">
+						<div>
+							<label class="control-label" for="id">아이디</label>
+							<input class="form-control id" type="text" name="id" id="shelter_id"/>
+							<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요.</small>
+							<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
+						</div>
+						<div>
+							<label class="control-label" for="pwd">비밀번호</label>
+							<input class="form-control" type="password" name="pwd" id="shelter_pwd"/>
+							<small class="form-text text-muted">5글자~10글자 이내로 입력하세요.</small>
+							<div class="invalid-feedback">비밀번호를 확인 하세요.</div>
+						</div>
+						<div>
+							<label class="control-label" for="pwd">비밀번호 확인</label>
+							<input class="form-control" type="password" name="pwd2" id="shelter_pwd2"/>
+						</div>
+						<div>
+							<label class="control-label" for="name">보호소 이름</label>
+							<input class="form-control" type="text" name="name" id="shelter_name"/>
+						</div>
+						<div>
+							<label class="control-label" for="serialNum">고유번호</label>
+							<input class="form-control" type="text" name="serialNum" id="serialNum"/>
+							<small class="form-text text-muted">000-00-00000 형식으로 입력하세요</small>
+							<div class="invalid-feedback">고유번호를 확인하세요.</div>
+						</div>
+						<div>
+							<label class="control-label" for="address">보호소 위치</label>
+							<input class="form-control" type="text" name="address" id="shelter_address" />
+							<a class="addr-btn btn btn-m btn-black" href="javascript:openAddrPop('${pageContext.request.contextPath}/users/addr.do', 'popup');">주소 검색</a>
+							<input type="hidden" name="longitude" id="longitude"/> <!-- 위도 / 경도 -->
+							<input type="hidden" name="latitude" id="latitude"/> 
+						</div>
+						<div>
+							<label class="control-label" for="phoneNumber">연락처</label>
+							<input class="form-control" type="tel" name="phoneNumber" id="shelter_phoneNumber"/>
+						</div>
+						<div>
+							<label class="control-label" for="email">이메일</label>
+							<input class="form-control email" type="text" name="email" id="shelter_email"/>
+							<div class="invalid-feedback">이메일 형식을 확인 하세요.</div>
+						</div>
+						<input type="hidden" name="groupNum" value="1" />
+						<button class="btn btn-m btn-black" type="submit">가입</button>
+					</form>
+		      </div>
+		</div>
 	</div>
+	<footer-component></footer-component>
 </div>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/footer.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js" type="text/javascript"></script>
 <script>
-	const tabs = document.querySelectorAll("[data-tab-target]");
-	const tabcon = document.querySelectorAll("[data-tab-content]");
-	tabs.forEach((tab) => {
-	  tab.addEventListener("click", () => {
-	    const target = document.querySelector(tab.dataset.tabTarget);
-	    tabcon.forEach((tabc_all) => {
-	      tabc_all.classList.remove("active");
-	    });
-	    target.classList.add("active");
-	  });
-	});
-	
 	//주소 팝업
 	function openAddrPop(url, name){
 	    let options = 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no, scrollbars=yes';
@@ -432,7 +327,10 @@ div.tab.btn.btn-primary {
 	      el: "#signup_form",
 	      data() {
 	    	  return{
-	    		 	 cpath: "${pageContext.request.contextPath}",
+	    		currentTab:0,
+    		    tabs:["일반회원", "보호소"],
+    		 	cpath: "${pageContext.request.contextPath}",
+    		 	id: "${sessionScope.id}",
 	    	  }
 	      }
 	   });
