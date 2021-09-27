@@ -1,0 +1,290 @@
+@charset "UTF-8";
+
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: rgba(255, 255, 255, 0.7);
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+@-moz-keyframes inputHighlighter {
+    from {
+        background: rgba(255, 255, 255, 0.7);
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+@keyframes inputHighlighter {
+    from {
+        background: rgba(255, 255, 255, 0.7);
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+.user-wrap{
+	font-family:'Noto Sans KR', sans-serif;
+	background:#fafafa;
+	padding:10vh 0;
+}
+.user-form{
+	background:#fff;
+	padding:100px 100px;
+	max-width:650px;
+	margin:0 auto;
+    z-index: 2;
+    text-align:center;
+}
+.login-card > form {
+    z-index: 4;
+    position: relative;
+    width: 100%;
+}
+.logo {
+    height: auto;
+    padding: 50px 0px;
+}
+.group {
+    position: relative;
+    margin-bottom: 45px;
+}
+.group input {
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: none;
+    color: #000;
+}
+.group input:focus {
+    outline: none;
+}
+
+.group label {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.9rem;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 5px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.group input:focus ~ label,
+input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.bar:before,
+.bar:after {
+    content: '';
+    height: 1px;
+    width: 0;
+    top:-5px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+    left: 50%;
+}
+.bar:after {
+    right: 50%;
+}
+
+.group input:focus ~ .bar:before,
+.group input:focus ~ .bar:after {
+    width: 50%;
+}
+
+.highlight {
+    position: absolute;
+    height: 0%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.group input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+.input-ikon {
+    font-size: 25px!important;
+    position: relative;
+}
+.input-sifre-ikon {
+    font-size: 22px!important;
+    position: relative;
+}
+.span-input {
+    position: relative;
+    top: -5px;
+}
+.giris-yap-buton{
+    background: #000;
+    color:#fff;
+    width: 100%;
+    height: 50px;
+    font-size:0.9rem;
+    display: block;
+    border:none;
+}
+.giris-yap-buton:hover {
+	color:#000;
+	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+.forgot-and-create {
+	margin-top:30px;
+    display:flex;
+    justify-content: center;
+    padding:0;
+    box-sizing:border-box;
+}
+.forgot-and-create>li{
+	flex:1;
+}
+.forgot-and-create>li.naver{
+	margin-right:10px;
+}
+.forgot-and-create>li.naver a{
+	background: #03c75a;
+	color:#fff;
+}
+.forgot-and-create>li.kakao a{
+	background: #ffeb00;
+	color:#000;
+}
+.forgot-and-create>li>a{
+	font-size:0.9rem;
+	padding:0;
+	display:flex;
+	align-items:center;
+	text-align:center;
+	justify-content:center;
+}
+.forgot-and-create>li>a img{
+	display:block;
+	width:40px;
+}
+.zaten-hesap-var-link {
+    color: #bbb;
+    font-size: 14px;
+    padding: 20px 0px;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+
+
+
+.items {
+  display: none;
+  position: relative;
+}
+.items.active {
+  display: inline-block;
+}
+/* 회원가입 */
+.form-title {
+  margin-bottom:15px;
+  text-align: center;
+  font-weight: bold;
+}
+.content {
+  display: block;
+  text-align: left;
+}
+#signup_form .btn {
+	margin-top:30px;
+  width:100%;
+}
+.tab-btn {
+  font-family: 'Cormorant Garamond', 'Nanum Myeongjo';
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.tab-btn button:first-of-type {
+    margin-left: 0;
+}
+.tab-btn button {
+  position: relative;
+  height: 60px;
+  border: 0;
+  background: 0;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #777;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.tab:hover{ 
+	cursor:pointer;
+}
+#info .user-form{
+	text-align: left;
+}
+#info table{
+    border-collapse: inherit;
+    border-spacing: 16px;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:-16px;
+    font-size: 0.9rem;
+}
+.profile{
+  border-radius:100%;
+  width:50px;
+  height:50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

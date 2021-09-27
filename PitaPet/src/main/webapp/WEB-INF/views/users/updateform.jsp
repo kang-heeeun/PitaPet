@@ -6,11 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>핏어펫(Pit a Pet) - 사지않고 유기동물을 입양하는 문화를 만듭니다</title>
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <jsp:include page="/resources/resource.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user.css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <style>
    /* 프로필 이미지를 작은 원형으로 만든다 */
@@ -24,39 +21,10 @@
    #imageForm{
    	  display:none;
    }
-   #updateform{
- 	 background-image: linear-gradient(90deg, rgb(106, 33, 223), rgb(209, 51, 230));
-	}
-	.container {
-	  vertical-align: middle;
-	  text-align: center;
-	}
-	.content {
-	  display: inline-block;
-	  text-align: left;
-	  background-color: whitesmoke;
-	  border-radius: .7em;
-	  padding: 3rem 3rem 3rem;
-	}
 	button {
 		margin-top:50px;
 		margin: 0;
   		padding: 0;
-	}
-	button.btn.btn-primary{
-		margin:30px;
-	}
-	div.tab.btn.btn-primary {
-	height: 40px;
-	}
-	.btn {
-	  border: none;
-	  font-weight: bold;
-	  width: 22.5rem;
-	  background-image: linear-gradient(90deg, rgb(209, 51, 230), rgb(106, 33, 223), rgb(9, 204, 204));
-	  border-radius: 2rem;
-	  height: 2.5rem;
-	  color: whitesmoke;
 	}
 	.form-title {
   		margin-bottom:15px;
@@ -71,17 +39,12 @@
 </head>
 <body>
 <div id="updateform">
-	<jsp:include page="/resources/header.jsp"></jsp:include>
-	<slider-component :cpath="cpath"></slider-component>
-	<intro-component></intro-component>
-	<review-component></review-component>
-	<family-component></family-component>
-	<footer-component></footer-component>
-	<div class="container">
+	<header-component :cpath="cpath" :id="id"></header-component>
+	<div class="user-wrap">
 		<c:choose>
 			<c:when test="${dto.groupNum eq 0}">
-				<form class="content" action="${pageContext.request.contextPath}/users/update.do" method="post">
-					<h1 class="form-title">일반 회원 정보 수정</h1>
+				<form class="user-form" action="${pageContext.request.contextPath}/users/update.do" method="post">
+					<h2 class="form-title">일반 회원 입니다</h2>
 						<div>
 							<a id="profileLink" href="javascript:">
 								<c:choose>
@@ -124,7 +87,7 @@
 						<div>
 							<label class="control-label" for="address">주소</label>
 							<input class="form-control" type="text" id="address_users" value="${dto.address }" name="address"/>
-							<a class="addr-btn btn btn-primary btn-sm" href="javascript:openAddrPop('${pageContext.request.contextPath}/users/addr.do', 'popup');">주소 검색</a>
+							<a class="addr-btn btn btn-s btn-black" href="javascript:openAddrPop('${pageContext.request.contextPath}/users/addr.do', 'popup');">주소 검색</a>
 						</div>
 						
 						<div>
@@ -135,17 +98,15 @@
 							<option value="three" ${dto.household eq "three" ? "selected" : "" }>3명이상</option>
 						</select>
 					</div>
-						<button class="btn btn-primary" type="submit">수정 반영</button>
+					<button class="btn btn-s btn-black" type="submit">수정 반영</button>
 				</form>
 				<form action="${pageContext.request.contextPath}/users/ajax_profile_upload.do" method="post" id="imageForm" enctype="multipart/form-data">
 					<input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .JPG, .JPEG, .gif"/>
 				</form>
 			</c:when>
-			
-			
 			<c:otherwise>
-				<form class="content"action="${pageContext.request.contextPath}/users/update.do" method="post">
-					<h1>보호소 회원 정보 수정</h1>
+				<form class="user-form" action="${pageContext.request.contextPath}/users/update.do" method="post">
+					<h2>보호소 회원 입니다</h2>
 						<a id="profileLink" href="javascript:">
 							<c:choose>
 								<c:when test="${empty dto.profile }">
@@ -184,11 +145,11 @@
 						<div>
 							<label class="control-label" for="address">주소</label>
 							<input class="form-control" type="text" id="address_shelter" value="${dto.address }" name="address"/>
-							<a class="addr-btn btn btn-primary btn-sm" href="javascript:openAddrPop('${pageContext.request.contextPath}/users/addr.do', 'popup');">주소 검색</a>
+							<a class="addr-btn btn btn-s btn-black" href="javascript:openAddrPop('${pageContext.request.contextPath}/users/addr.do', 'popup');">주소 검색</a>
 						</div>
 						<div>
 					</div>
-						<button class="btn btn-primary" type="submit">수정 반영</button>
+					<button class="btn btn-s btn-black" type="submit">수정 반영</button>
 				</form>
 				
 				<form action="${pageContext.request.contextPath}/users/ajax_profile_upload.do" method="post" id="imageForm" enctype="multipart/form-data">
@@ -197,9 +158,12 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+	<footer-component></footer-component>
 </div>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/footer.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 	//주소 팝업
@@ -246,7 +210,8 @@
 	      el: "#updateform",
 	      data() {
 	    	  return{
-	    		 	 
+	    		cpath: "${pageContext.request.contextPath}",
+    		 	id: "${sessionScope.id}",
 	    	  }
 	      }
 	   });
