@@ -53,27 +53,35 @@
   	background:rgba(255,255,255,0.3);
   	transition: background 0.3s ease-out;
   }
-  .card{
+.card{
   	border:0;
   	margin-bottom:3rem;
-  }
-  .card-body{
+  	text-align:left;
+}
+.card>ul{
+	padding:0;
+}
+.card-body{
   	padding: 2rem 1rem;
-  }
+ }
+.card-place{
+	margin:10px 0; 
+}
 .card-regdate{
+	margin-top:20px;
  	margin-bottom:10px;
  	font-family: 'Lato', sans-serif;
  	font-size:0.8rem;
  	color:#aaa;
  }
-  .card .card-tit{
+.card .card-tit{
  	font-family: 'Noto Sans KR', sans-serif;
     display:block;
     text-overflow: ellipsis;
     overflow: hidden;
     font-size: 1.2rem;
     height: 3.3rem;
- }
+}
  .card .card-txt{
  	font-family: 'Noto Sans KR', sans-serif;
     display:block;
@@ -330,13 +338,11 @@ pre {
 }
 .reserveCheck{
 	display:inline;
-	font-weight:bold;
 	color:red;
 }
 .reserveChecking{
 	display:inline;
-	font-weight:bold;
-	color:#948780;
+	color:#aaa;
 }
 
 

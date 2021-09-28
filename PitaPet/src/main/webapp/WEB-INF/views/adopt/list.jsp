@@ -73,15 +73,14 @@
 	             		</div>
 	         		</a>
 	         		<ul>
-	         			<li class="card-text">
+	         			<li class="card-regdate">{{tmp.regdate}}</li>
+	         			<li class="card-place">
 		           			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
 							  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
 							</svg>
 							<span>{{tmp.name}}</span>
 						</li>
-	         			<li class="card-text">{{tmp.title}}</li>
-	         			<li class="card-text">{{tmp.viewCount}}</li>
-	         			<li class="card-text">{{tmp.regdate}}</li>
+	         			<li class="card-tit">{{tmp.title}}</li>
 	         		</ul>
 	 			</div>
 	 		</li>
